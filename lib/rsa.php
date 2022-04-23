@@ -1,5 +1,5 @@
 <?php
-	include 'config/config.php';
+	include '../config/config.php';
 
 	function getSignContent($header, $body) {
 		$verify_request_param = [];
@@ -13,7 +13,7 @@
 		
 		$data = "params=".$json_request_body."&&verify=".$json_request_header;
 
-		print_r($data);
+		// print_r($data);
 		
 		$signature = rsaSign($data);
 		$response = [
