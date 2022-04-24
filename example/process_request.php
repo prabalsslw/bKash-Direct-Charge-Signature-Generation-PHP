@@ -1,42 +1,197 @@
 <?php 
 	include '../lib/signature.php';
+	include 'curl.php';
 
 	if (!empty($_POST['mtd']) && !empty($_POST['rbod'])) {
+
 		$body = $_POST['rbod'];
 		
 		switch($_POST['mtd']) {
 			case "prepare":
-				echo json_encode(prepare($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."oauths/prepare";
+				$sign = prepare($body);
+
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+				
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
+
 			case "applytoken":
-				echo json_encode(applyToken($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."oauths/applyToken";
+				$sign = applyToken($body);
+
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
+
 			case "directpay":
-				echo json_encode(directDebit($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."payments/pay";
+				$sign = directDebit($body);
+				
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
+
 			case "auth":
-				echo json_encode(authPay($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."payments/pay";
+				$sign = authPay($body);
+
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
+
 			case "capture":
-				echo json_encode(capturePayment($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."payments/capture";
+				$sign = capturePayment($body);
+
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
+
 			case "void":
-				echo json_encode(voidPayment($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."payments/cancelPayment";
+				$sign = voidPayment($body);
+
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
+
 			case "inquirypayment":
-				echo json_encode(inquiryPayment($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."payments/inquiryPayment";
+				$sign = inquiryPayment($body);
+
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
+
 			case "refund":
-				echo json_encode(refund($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."payments/refund";
+				$sign = refund($body);
+
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
+
 			case "inquiryrefund":
-				echo json_encode(inquiryRefund($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."payments/inquiryRefund";
+				$sign = inquiryRefund($body);
+
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
+
 			case "canceltoken":
-				echo json_encode(cancelToken($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."oauths/cancelToken";
+				$sign = cancelToken($body);
+
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
+
 			case "userinfo":
-				echo json_encode(inquiryUserToken($body) , JSON_PRETTY_PRINT);
+				$api_url = base_url."users/inquiryUserInfo";
+				$sign = inquiryUserToken($body);
+
+				if(!empty($_POST['sig'])) {
+					$api_response = json_decode(callToApi($api_url, $_POST['sig'], $body, client_id), true);
+				} else {
+					$api_response = null;
+				}
+
+				$data = [
+					'sign_key' => $sign,
+					'api_response' => $api_response
+				];
+				echo json_encode($data , JSON_PRETTY_PRINT);
 				break;
 			default:
     			echo "No method selected!";
