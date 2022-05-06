@@ -80,12 +80,12 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="embed-responsive embed-responsive-21by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                                        </div>
+                                        <div class="ratio ratio-21x9">
+                                            <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
+                                        </div>                                   
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                         <div class="card">
                             <input type="hidden" name="api_responses" id="api_responses">
                             <div class="card-body text-wrap">
-                                <pre><code id="apiresp" style="">
+                                <pre><code id="apiresp" style="">API Response..
                                 
                                 </code></pre>
                                 <button type="button" class="btn btn-light btn-sm float-end" onclick="copyResp()">Copy</button>
@@ -139,6 +139,7 @@
         $('#generate').on('click', function() {
             document.getElementById('sign').innerHTML = "";
             document.getElementById('signature_key').value = "";
+            document.getElementById('apiresp').innerHTML = "";
 
             var ele = document.getElementsByName('optradio');
               
