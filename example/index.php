@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" id="radio9" name="optradio" value="inquiryrefund">
-                            <label class="form-check-label" for="radio9">Inquiry Payment</label>
+                            <label class="form-check-label" for="radio9">Inquiry Refund</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" id="radio10" name="optradio" value="canceltoken">
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="ratio ratio-21x9">
-                                            <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
+                                            <iframe src="https://drive.google.com/file/d/1GecQmVr83Y_i7kfG2pbG0muMtr5qDy9Y/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
                                         </div>                                   
                                     </div>
                                     <div class="modal-footer">
