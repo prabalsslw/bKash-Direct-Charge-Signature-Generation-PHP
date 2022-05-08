@@ -26,10 +26,15 @@ Include this library to generate the Signature for Direct Charge API
 ### Prerequisite & Configuration
 Open `config/config.php` and update below **constant** parameters. 
 > `define("SIGN_TYPE", "RSA2");  // RSA but it will be always RSA2`
+
 > `define("CHARSET", "UTF-8");`
+
 > `define("base_url", "");  // Set base url provided from bKash`
+
 > `define("client_id", "Default");  // Default for Sandbox`
+
 > `define("PRIVATE_KEY", "");  // Set Private Key provided from bKash`
+
 > `define("PUBLIC_KEY", "");  // Set Public Key provided from bKash`
 
 ### Include Library
